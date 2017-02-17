@@ -1,7 +1,7 @@
 FROM alpine:3.4
 MAINTAINER Jimmi Dyson <jimmidyson@gmail.com>
 
-LABEL caddy_version="0.9.3" architecture="amd64"
+LABEL caddy_version="0.9.5" architecture="amd64"
 
 ARG plugins=cors,expires,git,jwt,minify,prometheus,ratelimit
 
@@ -14,7 +14,7 @@ RUN curl --silent --show-error --fail --location \
  && chmod 0755 /usr/bin/caddy \
  && /usr/bin/caddy -version
 
-EXPOSE 80 443 2015
+EXPOSE 2015
 VOLUME /root/.caddy
 WORKDIR /srv
 
