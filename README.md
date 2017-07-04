@@ -2,22 +2,22 @@
 
 A [Docker](http://docker.com) image for [Caddy](http://caddyserver.com). This image includes the following plugins:
 
-* [git](http://caddyserver.com/docs/git) plugin.
-* [cors](http://caddyserver.com/docs/cors) plugin.
-* [expires](http://caddyserver.com/docs/expires) plugin.
-* [jwt](http://caddyserver.com/docs/jwt) plugin.
-* [minify](http://caddyserver.com/docs/minify) plugin.
-* [prometheus](http://caddyserver.com/docs/prometheus) plugin.
-* [ratelimit](http://caddyserver.com/docs/ratelimit) plugin.
+* [git](http://caddyserver.com/docs/http.git) plugin.
+* [cors](http://caddyserver.com/docs/http.cors) plugin.
+* [expires](http://caddyserver.com/docs/http.expires) plugin.
+* [jwt](http://caddyserver.com/docs/http.jwt) plugin.
+* [minify](http://caddyserver.com/docs/http.minify) plugin.
+* [prometheus](http://caddyserver.com/docs/http.prometheus) plugin.
+* [ratelimit](http://caddyserver.com/docs/http.ratelimit) plugin.
 
 Plugins can be configured via the `plugins` build arg.
 
-[![](https://images.microbadger.com/badges/image/jimmidyson/caddy.svg)](https://microbadger.com/images/jimmidyson/caddy "Get your own image badge on microbadger.com")
+[![](https://images.microbadger.com/badges/image/syndesis/caddy.svg)](https://microbadger.com/images/syndesis/caddy "Get your own image badge on microbadger.com")
 
 ## Getting Started
 
 ```sh
-$ docker run -d -p 2015:2015 jimmidyson/caddy
+$ docker run -d -p 2015:2015 syndesis/caddy
 ```
 
 Point your browser to `http://127.0.0.1:2015`.
@@ -33,7 +33,7 @@ $ docker run -d \
     -v $(pwd)/Caddyfile:/etc/Caddyfile \
     -v $HOME/.caddy:/root/.caddy \
     -p 80:80 -p 443:443 \
-    jimmidyson/caddy
+    syndesis/caddy
 ```
 
 
@@ -46,7 +46,7 @@ $ docker run -d \
     -e "CADDYPATH=/etc/caddycerts" \
     -v $HOME/.caddy:/etc/caddycerts \
     -p 80:80 -p 443:443 \
-    jimmidyson/caddy
+    syndesis/caddy
 ```
 
 Above, we utilize the `CADDYPATH` environment variable to define a different location inside the container for
@@ -59,16 +59,16 @@ Caddy can serve sites from git repository using [git](https://caddyserver.com/do
 
 ##### Create Caddyfile
 
-Replace `github.com/jimmidyson/webtest` with your repository.
+Replace `github.com/syndesis/webtest` with your repository.
 
 ```sh
-$ printf "0.0.0.0\nroot src\ngit github.com/jimmidyson/webtest" > Caddyfile
+$ printf "0.0.0.0\nroot src\ngit github.com/syndesis/webtest" > Caddyfile
 ```
 
 ##### Run the image
 
 ```sh
-$ docker run -d -v $(pwd)/Caddyfile:/etc/Caddyfile -p 2015:2015 jimmidyson/caddy
+$ docker run -d -v $(pwd)/Caddyfile:/etc/Caddyfile -p 2015:2015 syndesis/caddy
 ```
 Point your browser to `http://127.0.0.1:2015`.
 
@@ -101,7 +101,7 @@ $ docker run -d \
     -v /path/to/sites/root:/srv \
     -v path/to/Caddyfile:/etc/Caddyfile \
     -p 2015:2015 \
-    jimmidyson/caddy
+    syndesis/caddy
 ```
 
 ### Let's Encrypt Auto SSL
@@ -122,5 +122,5 @@ You can change the the ports if ports 80 and 443 are not available on host. e.g.
 $ docker run -d \
     -v $(pwd)/Caddyfile:/etc/Caddyfile \
     -p 80:80 -p 443:443 \
-    jimmidyson/caddy
+    syndesis/caddy
 ```
